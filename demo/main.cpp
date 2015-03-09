@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 #include <iostream>
-
 #include "reflect.h"
 
 class Base {

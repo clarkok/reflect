@@ -131,21 +131,23 @@ __REFLECT_REGIST_CLASS<Base, T, class_name_wp, REFLECT_TAG> __REFLECT_REGIST_CLA
   };
   
 /*! Macro to call when RE_class has only two arguments */
-#define RE_class_2(classname, Base) \
-__STRING_WRAPPER(classname)        \
+#define RE_class_2(classname, Base)             \
+__STRING_WRAPPER(classname)                     \
 static REFLECT::__REFLECT_REGIST_CLASS_CALLER<  \
-  Base, \
-  class classname, \
-  __string_wrapper_##classname> _registor_caller_##classname; \
+  Base,                                         \
+  class classname,                              \
+  __string_wrapper_##classname>                 \
+  _registor_caller_##classname;                 \
 class classname : public Base
   
 /*! Macro to call when RE_class has three arguments */
-#define RE_class_3(classname, Base, tag)  \
-__STRING_WRAPPER(classname)              \
+#define RE_class_3(classname, Base, tag)        \
+__STRING_WRAPPER(classname)                     \
 static REFLECT::__REFLECT_REGIST_CLASS_CALLER<  \
-  Base, \
-  class classname, \
-  __string_wrapper_##classname, tag> _registor_caller_##classname; \
+  Base,                                         \
+  class classname,                              \
+  __string_wrapper_##classname, tag>            \
+  _registor_caller_##classname;                 \
 class classname : public Base
   
 /*! Small thick to overload macro RE_class */
