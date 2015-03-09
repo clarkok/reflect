@@ -77,7 +77,11 @@ __global_factory_map()
 /*!
  Class to regist factory to global factory map when constructing
  */
-template <class Base, class T, typename class_name_wp, typename REFLECT_TAG = DEFAULT_REFLECT_TAG>
+template <
+  class Base,
+  class T,
+  typename class_name_wp,
+  typename REFLECT_TAG = DEFAULT_REFLECT_TAG>
 class __REFLECT_REGIST_CLASS
 {
 public:
@@ -104,7 +108,11 @@ template <
   typename REFLECT_TAG = DEFAULT_REFLECT_TAG>
 class __REFLECT_REGIST_CLASS_CALLER
 {
-  static __REFLECT_REGIST_CLASS<Base, T, class_name_wp, REFLECT_TAG> __registor;
+  static __REFLECT_REGIST_CLASS<
+    Base,
+    T,
+    class_name_wp,
+    REFLECT_TAG> __registor;
   
 public:
   __REFLECT_REGIST_CLASS_CALLER() {
@@ -118,7 +126,16 @@ template <
   class T,
   typename class_name_wp,
   typename REFLECT_TAG>
-__REFLECT_REGIST_CLASS<Base, T, class_name_wp, REFLECT_TAG> __REFLECT_REGIST_CLASS_CALLER<Base, T, class_name_wp, REFLECT_TAG>::__registor;
+__REFLECT_REGIST_CLASS<
+  Base,
+  T,
+  class_name_wp,
+  REFLECT_TAG> 
+    __REFLECT_REGIST_CLASS_CALLER<
+      Base,
+      T,
+      class_name_wp,
+      REFLECT_TAG>::__registor;
   
 /* Use a struct to store and pass string literial */
 #define __STRING_WRAPPER(s)     \
