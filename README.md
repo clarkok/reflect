@@ -3,6 +3,7 @@ Complete C++ reflect library in less than 200 lines code.
 
 # Basic Usage
 ```C++
+#include <iostream>
 #include "reflect.h"
 
 class Base {
