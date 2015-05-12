@@ -1,6 +1,10 @@
 # Reflect
 Complete C++ reflect library in less than 200 lines code.
 
+中文介绍：
+  * [200 行的 C++ 反射](https://www.clarkok.com/blog/2015/03/09/200-%E8%A1%8C%E7%9A%84-C-%E5%8F%8D%E5%B0%84/)
+  * [100 行的 Enum 反射库](https://www.clarkok.com/blog/2015/05/12/100-%E8%A1%8C%E7%9A%84-Enum-%E5%8F%8D%E5%B0%84%E5%BA%93/)
+
 # Basic Usage
 
 ## Class reflection
