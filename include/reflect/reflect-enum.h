@@ -26,6 +26,10 @@
 #include <map>
 #include <vector>
 
+#ifdef REFLECT_NS
+namespace REFLECT_NS {
+#endif
+
 template <typename T>
 class EnumReflectionHelper
 {
@@ -42,6 +46,10 @@ public:
 template <typename T>
 EnumReflectionHelper<T> *enum_reflection()
 { return nullptr; }
+
+#ifdef REFLECT_NS
+}
+#endif
     
 #define __ENUM_TO_STRING(TypeName, ...)                         \
     template<>                                                  \

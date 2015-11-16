@@ -122,3 +122,6 @@ map EnumValue to string
 ### EnumName enum_reflection\<EnumName\>()->fromString(string)
 Reflect from string to EnumValue, Accept EnumMember with or without EnumName
 
+### Reflect in namespace
+Define `REFLECT_NS` to your namespace before including `reflect-enum.h`
+
