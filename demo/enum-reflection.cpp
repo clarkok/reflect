@@ -29,13 +29,13 @@ ENUM_CLASS(Test,
 
 int main()
 {
-  std::cout << enum_reflection<Test>()->toString(Test::TEST1) << std::endl;
+  std::cout << ENUM_REFLECT(Test)->toString(Test::TEST1) << std::endl;
 
-  std::cout << enum_reflection<Test>()->toString(
-      enum_reflection<Test>()->fromString("Test::TEST1")
+  std::cout << ENUM_REFLECT(Test)->toString(
+      ENUM_REFLECT(Test)->fromString("Test::TEST2")
     ) << std::endl;
 
-  std::cout << enum_reflection<Test>()->toString(
-      enum_reflection<Test>()->fromString("TEST1")
+  std::cout << ENUM_REFLECT(Test)->toString(
+      ENUM_REFLECT(Test)->fromString("TEST3")
     ) << std::endl;
 }

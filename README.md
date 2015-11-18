@@ -116,10 +116,10 @@ ENUM_CLASS( MyEnum    // enum class MyEnum {
 );                    // };
 ```
 
-### std::string enum_reflection\<EnumName\>()->toString(EnumValue)
+### std::string ENUM_REFLECT(EnumName)->toString(EnumValue)
 map EnumValue to string
 
-### EnumName enum_reflection\<EnumName\>()->fromString(string)
+### EnumName ENUM_REFLECT(EnumName)->fromString(string)
 Reflect from string to EnumValue, Accept EnumMember with or without EnumName
 
 ### Reflect in namespace

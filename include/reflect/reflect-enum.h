@@ -30,7 +30,9 @@
 namespace REFLECT_NS {
 #endif
 
-template <typename T>
+struct EnumReflectionDefaultTag { };
+
+template <typename T, typename Tag = EnumReflectionDefaultTag>
 class EnumReflectionHelper
 {
     static T rand_result;
@@ -43,17 +45,13 @@ public:
     }
 };
 
-template <typename T>
-EnumReflectionHelper<T> *enum_reflection()
-{ return nullptr; }
-
 #ifdef REFLECT_NS
 }
 #endif
     
 #define __ENUM_TO_STRING(TypeName, ...)                         \
-    template<>                                                  \
-    class EnumReflectionHelper<TypeName>                        \
+    template<typename Tag>                                      \
+    class EnumReflectionHelper<TypeName, Tag>                   \
     {                                                           \
         static std::string                                      \
         getName(std::stringstream &si)                          \
@@ -92,13 +90,12 @@ EnumReflectionHelper<T> *enum_reflection()
             return static_cast<TypeName>(                       \
                 re_string_table.at(s));                         \
         }                                                       \
-    };                                                          \
-    template<> EnumReflectionHelper<TypeName> *                 \
-    enum_reflection<TypeName>()                                 \
-    {                                                           \
-        static EnumReflectionHelper<TypeName> helper;           \
-        return &helper;                                         \
-    }
+        static EnumReflectionHelper* getHelper()                \
+        {                                                       \
+            static EnumReflectionHelper helper;                 \
+            return &helper;                                     \
+        }                                                       \
+    };
     
 #define __ENUM_DEFINE(TypeName, ...)        \
     enum class TypeName { __VA_ARGS__ };    \
@@ -106,5 +103,13 @@ EnumReflectionHelper<T> *enum_reflection()
 #define ENUM_CLASS(TypeName, ...)       \
     __ENUM_DEFINE(TypeName, __VA_ARGS__)\
     __ENUM_TO_STRING(TypeName, __VA_ARGS__)
+
+#ifdef REFLECT_NS
+#define ENUM_REFLECT(TypeName)              \
+    (::REFLECT_NS::EnumReflectionHelper<TypeName>::getHelper())
+#else
+#define ENUM_REFLECT(TypeName)              \
+    (EnumReflectionHelper<TypeName>::getHelper())
+#endif
 
 #endif // _CUA_DEBUG_REFLECT_ENUM_H_

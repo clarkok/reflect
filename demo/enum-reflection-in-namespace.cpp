@@ -18,11 +18,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#define REFLECT_NS test_ns
+
 #include <iostream>
 
-#define REFLECT_NS test_ns
 #include "../include/reflect/reflect-enum.h"
-#undef REFLECT_NS
 
 namespace test_ns {
     ENUM_CLASS(Test,
@@ -34,14 +34,14 @@ namespace test_ns {
 
 int main()
 {
-    std::cout << test_ns::enum_reflection<test_ns::Test>()->toString(test_ns::Test::TEST1) << std::endl;
+    std::cout << ENUM_REFLECT(test_ns::Test)->toString(test_ns::Test::TEST1) << std::endl;
 
-    std::cout << test_ns::enum_reflection<test_ns::Test>()->toString(
-            test_ns::enum_reflection<test_ns::Test>()->fromString("Test::TEST1")
+    std::cout << ENUM_REFLECT(test_ns::Test)->toString(
+            ENUM_REFLECT(test_ns::Test)->fromString("Test::TEST1")
         ) << std::endl;
 
-    std::cout << test_ns::enum_reflection<test_ns::Test>()->toString(
-            test_ns::enum_reflection<test_ns::Test>()->fromString("TEST1")
+    std::cout << ENUM_REFLECT(test_ns::Test)->toString(
+            ENUM_REFLECT(test_ns::Test)->fromString("TEST1")
         ) << std::endl;
 }
 
