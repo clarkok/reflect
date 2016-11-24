@@ -42,9 +42,7 @@ public:
    Create a object of base class
    @return pointer to new object
    */
-  virtual T* create() const {
-    return new T();
-  };
+  virtual T* create() const = 0;
 };
 
 /*!
